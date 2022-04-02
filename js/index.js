@@ -8,10 +8,12 @@ function changePage(e) {
     var child;
     name = e.path[0].getAttribute("name");
     id = e.path[0].getAttribute("boxid");
-    child = e.path[0];
-    child.setAttribute("class", "left-box-selected")
-    var title = document.getElementById("title-right");
-    title.innerText = name;
+    if (id < 32) {
+        child = e.path[0];
+        child.setAttribute("class", "left-box-selected")
+        var title = document.getElementById("title-right");
+        title.innerText = name;
+    }
     initRightContent(id);
 }
 
@@ -50,16 +52,26 @@ function initLeftContent() {
             leftContent.appendChild(cutline);
         }
     }
+    var childTitle = document.getElementById("title-child-box");
+    for (var i = 0; i < 8; i++) {
+        var child = document.createElement("div");
+        child.setAttribute("class", "title-child");
+        child.innerText = "[等级" + (i * 5 + 1) + "-" + (i * 5 + 5) + "]";
+        child.setAttribute("boxid", i + 33)
+        childTitle.appendChild(child);
+        childTitle.addEventListener("click", changePage)
+    }
 }
 
-function fullContent(param) {
+function fullContent(param, append) {
     var json = JSON.parse(param);
     var detailTable = document.getElementById("detailTable");
     var child = detailTable.firstChild;
-    while (child) {
-        detailTable.removeChild(child);
-        child = detailTable.firstChild;
-    }
+    if (!append)
+        while (child) {
+            detailTable.removeChild(child);
+            child = detailTable.firstChild;
+        }
     for (var i = 0; i < json.length; i++) {
         var tr = document.createElement("tr");
         var td = document.createElement("td");
@@ -97,13 +109,20 @@ function fullContent(param) {
             remark.setAttribute("class", "ex");
             td.appendChild(remark);
         };
-        td.setAttribute("class", "td-bg");
+        // td.setAttribute("class", "td-bg");
         tr.appendChild(td);
         detailTable.appendChild(tr)
     }
 }
 
+
 function initRightContent(index) {
+    var childTitle = document.getElementById("title-child-box");
+    if (index == 14 || index > 32) {
+        childTitle.style.display = "flex";
+    } else {
+        childTitle.style.display = "none";
+    }
     switch (Number(index)) {
         case 12:
             fullContent(books);
@@ -113,6 +132,10 @@ function initRightContent(index) {
             break;
         case 14:
             fullContent(itemsLevel1);
+            fullContent(itemsLevel2, 1);
+            fullContent(itemsLevel3, 1);
+            fullContent(itemsLevel4, 1);
+            fullContent(itemsLevel5, 1);
             break;
         case 15:
             break;
@@ -149,6 +172,29 @@ function initRightContent(index) {
         case 31:
             break;
         case 32:
+            break;
+        case 33:
+            fullContent(itemsLevel1);
+            fullContent(itemsLevel2, 1);
+            fullContent(itemsLevel3, 1);
+            fullContent(itemsLevel4, 1);
+            fullContent(itemsLevel5, 1);
+            break;
+        case 34:
+            fullContent(itemsLevel6);
+            fullContent(itemsLevel7, 1);
+            break;
+        case 35:
+            break;
+        case 36:
+            break;
+        case 37:
+            break;
+        case 38:
+            break;
+        case 39:
+            break;
+        case 40:
             break;
         default:
             fullContent(books);

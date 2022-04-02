@@ -11,16 +11,23 @@
     width: 11%;
 }
 
-.left-box{
+.left-box {
     padding-top: 8px;
     border-radius: 4px;
-    box-shadow:1px 1px 2px 2px rgb(124, 124, 124);
+    box-shadow: 1px 1px 2px 2px rgb(124, 124, 124);
 }
 
-.left-box-selected{
+.left-box-selected {
     padding-top: 8px;
     border-radius: 4px;
-    box-shadow:inset 1px 1px 2px 2px rgb(124, 124, 124);
+    box-shadow: inset 1px 1px 2px 2px rgb(124, 124, 124);
+    color: #ff7b00;
+}
+
+.title {
+    margin-left: 8px;
+    font-size: x-large;
+    font-weight: bolder;
 }
 
 .title-left {
@@ -29,6 +36,24 @@
     font-size: 14px;
     margin-bottom: 12px;
     padding-bottom: 4px;
+}
+
+.title-child-box {
+    vertical-align: middle;
+}
+
+.title-child {
+    text-align: center;
+    width: 72px;
+    border-style: solid;
+    border-radius: 4px;
+    padding: 8px;
+    background-color: oldlace;
+    border-color: aliceblue;
+    border-width: 1px;
+    margin-top: 4px;
+    margin-left: 8px;
+    font-size: 12px;
 }
 
 .title-left-red {
@@ -101,7 +126,7 @@
 .body-content {
     text-align: center;
     width: 960px;
-    scrollbar-width: 0xp;
+    scrollbar-width: 0px;
     padding: 12px;
     margin: 0px auto;
     height: auto;
@@ -123,11 +148,7 @@
     clear: both;
 }
 
-.title {
-    margin-left: 8px;
-    font-size: x-large;
-    font-weight: bolder;
-}
+
 
 .icon {
     margin-top: 8px;
@@ -138,7 +159,12 @@
 }
 
 .desc {
+    min-height: 72px;
+    max-height: fit-content;
+    right: 0;
+    display: -webkit-box;
     margin-top: 8px;
+    line-height: 18px;
 }
 
 .gold {
@@ -158,9 +184,15 @@
     margin-top: 8px;
 }
 
-.td-bg{
+.table-content {
     width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+}
+
+.table-content td{
+    width: 50%;
     border-radius: 4px;
-    box-shadow: 1px 1px 2px 1px rgb(190, 190, 190);;
-    background-color:whitesmoke;
+    box-shadow: 1px 1px 2px 1px rgb(190, 190, 190);
+    background-color: whitesmoke;
 }
